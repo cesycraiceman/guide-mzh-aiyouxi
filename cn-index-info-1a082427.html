@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>leyu — 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f7fbfe;
+            color: #1f2a3a;
+            line-height: 1.6;
+            padding: 0 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0 3rem;
+        }
+
+        /* ---------- 杂志式横幅 (hero) ---------- */
+        .hero {
+            background: linear-gradient(135deg, #e5f3ef 0%, #c9e3da 50%, #b2d4c9 100%);
+            border-radius: 2rem;
+            padding: 2.8rem 2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 12px 28px -10px rgba(38, 99, 81, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -3rem;
+            top: -4rem;
+            width: 18rem;
+            height: 18rem;
+            background: radial-gradient(circle, rgba(0,168,131,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #104b3c;
+            margin-bottom: 0.6rem;
+            line-height: 1.2;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #1f5a4b;
+            max-width: 34rem;
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(2px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* ---------- 网格卡片体系 ---------- */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.6rem;
+            margin: 2.4rem 0;
+        }
+
+        @media (min-width: 600px) {
+            .grid-cards {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.8rem;
+            }
+        }
+
+        @media (min-width: 960px) {
+            .grid-cards {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 4px 14px rgba(0, 80, 60, 0.04);
+            border: 1px solid #e2efea;
+            transition: all 0.15s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 22px rgba(17, 94, 75, 0.08);
+            border-color: #b6d4ca;
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #115544;
+            margin-bottom: 0.65rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3 span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #23967f;
+            border-radius: 50%;
+            margin-right: 0.1rem;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: #2a3e3a;
+            margin-bottom: 0.6rem;
+            flex: 1;
+        }
+
+        .card .meta {
+            font-size: 0.85rem;
+            color: #58837b;
+            border-top: 1px solid #e0ede8;
+            padding-top: 0.75rem;
+            margin-top: 0.4rem;
+        }
+
+        .badge {
+            background: #d6efe8;
+            color: #0e5646;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.2rem 0.7rem;
+            border-radius: 100px;
+            display: inline-block;
+            letter-spacing: 0.01em;
+        }
+
+        /* ---------- 三段自然介绍 (承接段落) ---------- */
+        .essay-section {
+            background: #ffffff;
+            border-radius: 1.8rem;
+            padding: 2rem 1.8rem;
+            margin: 2rem 0;
+            border: 1px solid #dceee7;
+            box-shadow: 0 6px 14px rgba(0, 70, 55, 0.04);
+        }
+
+        .essay-section h2 {
+            font-size: 1.6rem;
+            font-weight: 550;
+            color: #0f4d3f;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .essay-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem;
+        }
+
+        .essay-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .accent-link {
+            color: #167a64;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1.5px solid #b0d4c8;
+            transition: border 0.2s;
+        }
+
+        .accent-link:hover {
+            border-bottom-color: #167a64;
+        }
+
+        /* ---------- 页尾访问提示 ---------- */
+        .footer-prompt {
+            margin: 3rem 0 1.5rem;
+            padding: 1.6rem 2rem;
+            background: linear-gradient(120deg, #ecf6f2, #d9ede5);
+            border-radius: 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem 1.5rem;
+            border: 1px solid #bedace;
+        }
+
+        .footer-prompt .info {
+            font-size: 1rem;
+            color: #1f5447;
+        }
+
+        .footer-prompt .info strong {
+            font-weight: 600;
+        }
+
+        .pill-link {
+            background: #115544;
+            color: #f4fcf9;
+            padding: 0.55rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background 0.15s, transform 0.1s;
+            display: inline-block;
+            white-space: nowrap;
+            border: 1px solid #0a4035;
+            box-shadow: 0 2px 8px rgba(0,80,60,0.1);
+        }
+
+        .pill-link:hover {
+            background: #0a4033;
+            transform: scale(1.02);
+        }
+
+        /* ---------- 其他辅助 ---------- */
+        .note-bar {
+            background: #f1f9f5;
+            border-left: 4px solid #23967f;
+            padding: 1rem 1.4rem;
+            border-radius: 1rem;
+            margin: 1.6rem 0 0.8rem;
+            font-size: 0.95rem;
+            color: #1b4a3e;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #d1e6dd;
+            margin: 1rem 0;
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .sub {
+                font-size: 0.95rem;
+                padding: 0.5rem 1rem;
+            }
+            .essay-section {
+                padding: 1.5rem 1.2rem;
+            }
+            .footer-prompt {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 首页横幅 (hero) -->
+    <header class="hero">
+        <h1>leyu · 稳定的数字入口</h1>
+        <div class="sub">页面说明 & 持续可及的路径</div>
+    </header>
+
+    <!-- 网格卡片：特点/场景/摘要 -->
+    <div class="grid-cards">
+        <div class="card">
+            <h3><span></span> 结构清晰</h3>
+            <p>每个板块承担独立的叙述角色：从入口说明、背景介绍到功能提示，避免信息堆砌。卡片式布局让浏览节奏更从容。</p>
+            <div class="meta"><span class="badge">布局</span> 网格对齐</div>
+        </div>
+        <div class="card">
+            <h3><span></span> 蓝绿点缀</h3>
+            <p>主色调取自矿物与植被的交界色，低饱和背景配合深浅绿蓝强调线，降低视觉疲劳的同时保持专业感。</p>
+            <div class="meta"><span class="badge">色彩</span> #23967f · #c9e3da</div>
+        </div>
+        <div class="card">
+            <h3><span></span> 入口即用</h3>
+            <p>面向需要快速定位稳定索引的用户，页面内所有指向均经过校验，确保路径可靠、文本一致。</p>
+            <div class="meta"><span class="badge">可用性</span> 响应式 · 轻量</div>
+        </div>
+    </div>
+
+    <!-- 三段自然介绍 (背景说明 + 承接) -->
+    <section class="essay-section">
+        <h2>从稳定入口说起</h2>
+        <p>在信息流动频繁的网络环境中，一个保持长期可用的地址本身就是一种基础信任。leyu 对应的索引页面在设计之初就侧重两点：<strong>路径透明度</strong>与<strong>内容中立性</strong>。用户不必在多层跳转中猜测下一步去向——每个链接的可见文本都直接对应目标。</p>
+        <p>以本文介绍页为例，指向 <a href="https://cn-index-leyu.com" class="accent-link">leyu</a> 的链接被嵌入自然语句中，不附加任何诱导性修饰。这种做法减少了视觉噪音，也方便屏幕阅读器准确传达意图。</p>
+        <p>背景层面，整个页面采用低对比度蓝绿渐变与卡片网格，既呼应生态与技术的交汇感，也保持足够的可读性。杂志专题式的段落安排让知识型内容更有层次，而不是简单的列表或广告式文案。</p>
+    </section>
+
+    <section class="essay-section">
+        <h2>页面结构与阅读节奏</h2>
+        <p>三组卡片分别对应布局、色彩与可用性，它们构成了视觉的第一印象。紧接着的这段介绍则承担过渡功能：将用户从“看到了什么”引导至“为什么这样设计”。例如卡片中提到的“蓝绿点缀”并非装饰，而是为了在大量文字中快速区分区块边界。</p>
+        <p>在移动端，网格自动折行为单列，卡片间距与字体大小同步适配。顶部的横幅背景使用了径向光晕，避免大面积纯色带来的沉闷感。所有交互元素（链接、卡片悬停）都带有微反馈，但不会过度动效扰人。</p>
+        <p>值得一提的是，页面底部设置了一个独立的页尾提示区，方便需要直接前往主站点的访客快速定位，同时保持内容上的克制——只说明“可用”，不夸张承诺。</p>
+    </section>
+
+    <section class="essay-section">
+        <h2>FAQ 摘要 · 常见疑问</h2>
+        <p><strong>问：</strong> 这个页面是否长期更新？<br>
+        <strong>答：</strong> 本介绍页属于静态索引，内容会随主站结构微调，但指向 <a href="https://cn-index-leyu.com" class="accent-link">leyu</a> 的链接地址保持稳定。</p>
+        <p><strong>问：</strong> 卡片和段落的颜色是否有特殊含义？<br>
+        <strong>答：</strong> 蓝绿色系意在提供中性、冷静的视觉氛围，不暗示任何特定行业属性，只为降低长时间阅读的疲劳感。</p>
+        <p><strong>问：</strong> 为什么链接文本严格限制为“leyu”？<br>
+        <strong>答：</strong> 为了统一索引规范，避免因为文字变化导致用户预期偏差。所有指向该地址的文本均一致。</p>
+        <div class="note-bar">
+            💡 若需要了解更详细的页面组成或技术细节，可参考页面说明部分。
+        </div>
+    </section>
+
+    <!-- 页尾访问提示 (不含 “进入、点击、访问、官网” 等词) -->
+    <div class="footer-prompt">
+        <div class="info">
+            <strong>leyu</strong> 索引页面 · 稳定可用 <span style="opacity:0.5;margin:0 0.4rem;">|</span> 
+            建议通过浏览器书签或直接输入地址获取最新内容。
+        </div>
+        <a href="https://cn-index-leyu.com" class="pill-link">leyu</a>
+    </div>
+
+    <!-- 极简版权占位，仅作结构完整 -->
+    <hr>
+    <p style="font-size:0.8rem; color:#6f9288; text-align:center; margin:1rem 0 0.2rem;">
+        · 杂志式介绍页 · 蓝绿主题 · 移动优先 ·
+    </p>
+</div>
+</body>
+</html>
