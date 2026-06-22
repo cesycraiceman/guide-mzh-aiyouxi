@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>白菜论坛 · 网站用途说明与导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f2ed;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+            line-height: 1.6;
+            color: #1f2a34;
+        }
+
+        /* 深色头图 —— 杂志横幅 */
+        .hero {
+            background: linear-gradient(145deg, #10161c 0%, #1e2935 100%);
+            padding: 4rem 2rem 3.2rem;
+            text-align: center;
+            color: #eaeff5;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: repeating-linear-gradient(90deg, #2b8c5e 0px, #2b8c5e 20px, #427a9e 20px, #427a9e 40px);
+            opacity: 0.4;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+            color: #f0f6fc;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subhead {
+            font-size: 1.05rem;
+            font-weight: 350;
+            color: #b7c9db;
+            max-width: 560px;
+            margin: 0.6rem auto 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1rem;
+            display: inline-block;
+        }
+
+        /* 正文浅色区 —— 卡片式段落 */
+        .content-wrapper {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 2.6rem 1.5rem 3rem;
+        }
+
+        .section-card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.4rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s;
+        }
+
+        .section-card:last-of-type {
+            margin-bottom: 1.6rem;
+        }
+
+        .section-card h2 {
+            font-size: 1.55rem;
+            font-weight: 450;
+            margin-bottom: 0.7rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #dce3ea;
+            color: #1d2a36;
+            letter-spacing: -0.02em;
+        }
+
+        .section-card p {
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem;
+            color: #2e3b48;
+        }
+
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #1e6b74;
+            text-decoration: none;
+            font-weight: 480;
+            transition: color 0.15s, border-bottom 0.15s;
+            border-bottom: 1px dotted #a1b7c2;
+        }
+
+        a:hover {
+            color: #0c4f59;
+            border-bottom: 1px solid #0c4f59;
+        }
+
+        /* 点缀：小标签/场景标识 */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.6rem;
+            margin: 1.2rem 0 0.2rem;
+        }
+
+        .tag {
+            background-color: #eef2f6;
+            color: #1f3442;
+            font-size: 0.8rem;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            border: 1px solid #d6e0e8;
+        }
+
+        /* 页尾访问提示 – 干净克制 */
+        .page-footer {
+            background-color: #e7e4de;
+            padding: 1.6rem 2rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #384a58;
+            border-top: 1px solid #cfd7df;
+        }
+
+        .page-footer .foot-note {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .page-footer a {
+            border-bottom: 1px solid #7f9aa8;
+        }
+
+        /* FAQ 摘要小区域 */
+        .faq-mini {
+            background: #f8f6f2;
+            border-left: 4px solid #2b8c5e;
+            padding: 1.2rem 1.6rem;
+            border-radius: 14px;
+            margin-top: 0.8rem;
+        }
+
+        .faq-mini dt {
+            font-weight: 530;
+            margin-top: 0.2rem;
+            color: #1d3a44;
+        }
+
+        .faq-mini dd {
+            margin-left: 0.2rem;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+            color: #3d4d5c;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 3rem 1.2rem 2.4rem;
+            }
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .section-card {
+                padding: 1.5rem 1.2rem;
+                border-radius: 16px;
+            }
+            .section-card h2 {
+                font-size: 1.3rem;
+            }
+            .content-wrapper {
+                padding: 1.5rem 0.8rem 2.2rem;
+            }
+            .faq-mini {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .hero h1 {
+                font-size: 3.3rem;
+            }
+            .content-wrapper {
+                padding: 3.2rem 1.5rem 3.8rem;
+            }
+        }
+
+        /* 辅助视觉 */
+        hr {
+            border: none;
+            border-top: 1px solid #d9dfe6;
+            margin: 0.6rem 0 1.2rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色杂志横幅 -->
+    <header class="hero">
+        <h1>白菜论坛</h1>
+        <div class="subhead">
+            一处内容导向的讨论空间 · 网站定位与使用说明
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <!-- 板块一：背景说明 —— 网站用来干什么 -->
+        <section class="section-card">
+            <h2>这个网站是什么？</h2>
+            <p>
+                <strong><a href="https://cn-baicaibbs.com">白菜论坛</a></strong> 是一个以用户交流为核心的网络社区，主要围绕生活话题、实用信息与兴趣分享展开讨论。网站版面结构清晰，便于参与者快速找到自己关心的分类。当前页面旨在以平实的方式介绍该论坛的主要用途，帮助初次访问者了解其基本属性。
+            </p>
+            <p>
+                论坛并不限定单一垂直领域，而是容纳多种议题：从日常经验、消费心得，到技术问答与休闲讨论。无论你是寻找同类意见，还是希望发布自己的观察，这里都提供一个相对自由、低门槛的发言环境。
+            </p>
+            <div class="tag-list">
+                <span class="tag">话题广场</span>
+                <span class="tag">经验交流</span>
+                <span class="tag">兴趣小组</span>
+                <span class="tag">信息聚合</span>
+            </div>
+        </section>
+
+        <!-- 板块二：三段自然介绍之一（从用户识别用途的角度） -->
+        <section class="section-card">
+            <h2>如何快速识别站点用途</h2>
+            <p>
+                访问一个不熟悉的论坛，最先留意的是它的讨论基调与内容密度。在 <a href="https://cn-baicaibbs.com">白菜论坛</a>，首页展示近期活跃的帖子以及分区列表，用户可以根据标题判断是否符合自己的兴趣。版块名称大多直接（如“闲聊”、“求助”、“资源”），降低理解成本。
+            </p>
+            <p>
+                论坛内不少用户会使用简洁的描述性标题，并附带标签或前缀。这种组织方式让浏览者不需要注册也能大致把握社区气氛。如果你只是想单纯阅读或搜罗信息，未登录状态下同样可以浏览大部分公开内容。
+            </p>
+            <p>
+                此外，网站没有过度复杂的权限体系，注册流程也较为常规。这对于想快速参与讨论的人来说，减少了很多不必要的步骤。
+            </p>
+        </section>
+
+        <!-- 板块三：三个实用场景/特点（融入FAQ摘要） -->
+        <section class="section-card">
+            <h2>常见使用场景</h2>
+            <p>根据现有内容结构，以下场景在论坛中反复出现：</p>
+            <ul style="padding-left: 1.5rem; margin-bottom: 1rem; color: #2e3b48;">
+                <li><strong>资讯求证</strong> —— 用户分享某条消息或产品信息，希望获得其他人的反馈或验证。</li>
+                <li><strong>经验记录</strong> —— 包括消费评价、生活技巧、软件使用心得等，常伴有互动追问。</li>
+                <li><strong>轻松闲聊</strong> —— 话题较发散，不追求深度，旨在建立日常交流氛围。</li>
+            </ul>
+            <div class="faq-mini">
+                <dl>
+                    <dt>❓ 是否需要注册才能阅读全部帖子？</dt>
+                    <dd>大部分板块对访客开放阅读，但回复或发帖需要注册账号。具体限制以各分区置顶说明为准。</dd>
+                    <dt>❓ 论坛的讨论语言以什么为主？</dt>
+                    <dd>主要使用中文，偶尔出现英文术语或方言表达，整体符合中文互联网社区习惯。</dd>
+                    <dt>❓ 内容以什么形式呈现？</dt>
+                    <dd>传统论坛帖子形式，支持文字、图片及链接。部分版块允许附件或嵌入内容。</dd>
+                </dl>
+            </div>
+        </section>
+
+        <!-- 一段过渡/补充说明，保持三段结构并自然收束 -->
+        <section class="section-card" style="background: #fcfaf7;">
+            <h2>使用前的一些提醒</h2>
+            <p>
+                任何网络社区都有其约定俗成的规则。建议新用户在发言前花几分钟阅读对应版块的置顶或版规，尤其注意关于转载、引用的基本要求。论坛没有夸张的承诺，也不鼓励虚假信息或恶意引战。
+            </p>
+            <p>
+                如果你本来就熟悉中文论坛的交流模式，那么适应 <a href="https://cn-baicaibbs.com">白菜论坛</a> 应该非常顺利。不妨先浏览几个高回复帖子，感受一下内容节奏。
+            </p>
+            <hr>
+            <p style="font-size: 0.9rem; color: #4c6071;">
+                <span style="display: inline-block; background: #dee5ec; padding: 0.1rem 0.7rem; border-radius: 30px; margin-right: 0.5rem;">ℹ️</span> 
+                本页面仅作介绍，不构成对论坛内容的背书。所有信息请以网站实际展示为准。
+            </p>
+        </section>
+    </main>
+
+    <!-- 页尾访问提示 -->
+    <footer class="page-footer">
+        <div class="foot-note">
+            <p style="margin-bottom: 0.3rem;">
+                <span style="background: #d0d9e0; padding: 0.1rem 0.8rem; border-radius: 30px; font-size: 0.8rem;">指南页</span>
+            </p>
+            <p>
+                如需直接前往讨论区，可访问该论坛：<a href="https://cn-baicaibbs.com">白菜论坛</a>。
+                本站不收集访问数据，仅作为用途说明页面。
+            </p>
+            <p style="margin-top: 0.8rem; font-size: 0.8rem; opacity: 0.7;">
+                —— 内容基于公开信息整理 · 无诱导表述 ——
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
