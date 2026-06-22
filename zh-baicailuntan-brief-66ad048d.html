@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>白菜论坛 – 信息聚合与社区交流</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #fafafa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", system-ui, sans-serif;
+      color: #1e2a3a;
+      line-height: 1.7;
+      padding: 2rem 1.5rem 4rem;
+    }
+    .page-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* 主视觉——极简标题区 */
+    .hero {
+      margin-bottom: 3.6rem;
+      padding-top: 1.2rem;
+    }
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b1a2b;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+    .hero .sub {
+      font-size: 1rem;
+      color: #5b6b7c;
+      border-left: 3px solid #d4dde6;
+      padding-left: 1rem;
+      margin-top: 0.3rem;
+      max-width: 80%;
+    }
+
+    /* 内容卡片组 */
+    .card-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+      transition: box-shadow 0.15s ease;
+    }
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.02);
+    }
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #13273e;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .card h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 1.1em;
+      background: #a3b8cc;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #2b3d51;
+      margin-bottom: 0.6rem;
+    }
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+    .card .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.7rem;
+      margin-top: 0.8rem;
+    }
+    .tag-list span {
+      background: #eef2f6;
+      padding: 0.2rem 0.8rem;
+      border-radius: 24px;
+      font-size: 0.8rem;
+      color: #1e3a5a;
+      letter-spacing: 0.01em;
+    }
+
+    /* 自然链接段落区 */
+    .link-block {
+      background: transparent;
+      border: 1px solid #dce3ec;
+      border-radius: 20px;
+      padding: 1.8rem 1.6rem;
+      margin: 2.2rem 0 3rem;
+    }
+    .link-block p {
+      font-size: 0.95rem;
+      color: #1e2a3a;
+      margin-bottom: 0.7rem;
+    }
+    .link-block a {
+      color: #1b4b6f;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      font-weight: 500;
+    }
+    .link-block a:hover {
+      color: #0b2d47;
+      text-decoration-thickness: 2px;
+    }
+
+    /* faq 小摘要 */
+    .faq-tiny {
+      margin: 1.8rem 0 2.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid #e4eaf0;
+      padding-bottom: 0.8rem;
+    }
+    .faq-item h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1a2d44;
+      margin-bottom: 0.25rem;
+    }
+    .faq-item p {
+      font-size: 0.88rem;
+      color: #4a5f74;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #dce4ed;
+      margin: 2.8rem 0 1.2rem;
+    }
+    .footer-note {
+      font-size: 0.78rem;
+      color: #768a9c;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 460px) {
+      body { padding: 1.5rem 1rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .hero .sub { max-width: 100%; }
+      .card { padding: 1.4rem 1.2rem; }
+      .link-block { padding: 1.4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 主视觉 -->
+  <div class="hero">
+    <h1>白菜论坛 · 信息聚合与社区交流</h1>
+    <div class="sub">一个以内容筛选和话题讨论为核心的网络站点</div>
+  </div>
+
+  <!-- 信息卡片式：用途卡片、适合人群、场景 -->
+  <div class="card-group">
+
+    <div class="card">
+      <h2>网站用途</h2>
+      <p>很多人第一次进入一个论坛，往往需要花费不少时间去辨别其定位。而「白菜论坛」从一开始就将信息分类和社区互动并列：它既提供经过整理的公开资讯，也允许用户围绕具体话题展开讨论。版面结构简洁，没有冗余的装饰，从首页就能大致看出各个板块所关注的方向。</p>
+      <p>如果你习惯先浏览再发言，这里的内容密度适中，不会让人感到信息过载；如果你更倾向直接参与，论坛也保留了发帖和回复的入口。整体来说，它更像一个<strong>由话题驱动的小型线上社群</strong>，而非大而全的通用平台。</p>
+    </div>
+
+    <div class="card">
+      <h2>适合人群</h2>
+      <p>这个站点对那些希望快速找到同类兴趣点的人比较友好。比如，你平时喜欢关注某些特定领域的信息更新，又希望在同一个地方看到其他人的看法或补充，那么这里的讨论氛围可能会让你感到自然。同时，论坛的注册门槛不高，新用户花几分钟就能熟悉基本操作。</p>
+      <p>当然，如果你只是偶尔浏览、不打算发言，也完全没问题。站内的大部分内容对访客可见，不需要强制登录才能阅读。</p>
+      <div class="tag-list">
+        <span>信息收集型</span>
+        <span>话题讨论型</span>
+        <span>轻度互动</span>
+        <span>内容筛选</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>常见使用场景</h2>
+      <p>假设你有一个持续关注的兴趣点——也许是某个领域的新闻，也许是某种实用技巧的交流。你打开<a href="https://zh-baicailuntan.com" style="text-decoration:underline;color:#1b4b6f;font-weight:500;">白菜论坛</a>，先扫一眼最新的标题列表，挑出两三个感兴趣的帖子点进去。如果恰好有人分享了有价值的观点，你可能会顺着回复再往下看几页，或者在某个话题下记下一个有用的链接。</p>
+      <p>另一种情况是，你刚接触某个新领域，想找一些入门向的讨论。论坛里通常会有一些长期更新的主题帖，集中整理了不少基础信息和经验分享，省去了自己四处搜索的时间。</p>
+    </div>
+  </div>
+
+  <!-- 自然链接段落（独立区块，链接嵌入句子） -->
+  <div class="link-block">
+    <p>从使用体验来说，这个论坛并不追求华丽的界面或复杂的交互，它的核心逻辑还是围绕「分类 + 讨论」。如果你在找一个能同时满足信息获取和轻度社交需求的站点，不妨亲自看看。具体的内容结构和活跃度，只有实际浏览后才能做出自己的判断。</p>
+    <p>网站地址就是 <a href="https://zh-baicailuntan.com">白菜论坛</a> ，直接打开即可访问所有公开板块。没有强制注册的阅读门槛，也不需要下载额外的客户端。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-tiny">
+    <div class="faq-item">
+      <h3>需要注册才能看内容吗？</h3>
+      <p>大部分内容对访客开放阅读，只有发帖或回复时需要注册账号。注册流程简单，只需提供基本的信息。</p>
+    </div>
+    <div class="faq-item">
+      <h3>论坛主要讨论哪些方向？</h3>
+      <p>涵盖多个常规话题领域，包括生活、兴趣、资讯交流等。具体板块分类可以在首页直接看到。</p>
+    </div>
+    <div class="faq-item">
+      <h3>移动端浏览体验如何？</h3>
+      <p>页面采用自适应布局，手机和电脑上都能正常阅读和操作。没有独立的 App，直接用浏览器即可。</p>
+    </div>
+  </div>
+
+  <hr>
+  <div class="footer-note">—— 信息卡片式介绍 · 只描述，不夸大 ——</div>
+
+</div>
+</body>
+</html>
